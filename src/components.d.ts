@@ -23,7 +23,7 @@ export namespace Components {
     /**
     * The `locale` that will be passed to `Intl.PluralRules`  You may also pass in a comma-separated list of values, providing fallbacks
     */
-    'locale': string;
+    'lang': string;
     /**
     * The `localeMatcher` that will be passed to `Intl.PluralRules`   Possible options are `best fit` (default) or `lookup`
     */
@@ -41,7 +41,7 @@ export namespace Components {
     /**
     * The `locale` that will be passed to `Intl.PluralRules`  You may also pass in a comma-separated list of values, providing fallbacks
     */
-    'locale'?: string;
+    'lang'?: string;
     /**
     * The `localeMatcher` that will be passed to `Intl.PluralRules`   Possible options are `best fit` (default) or `lookup`
     */

@@ -13,11 +13,14 @@
     "build": "stencil build",
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
-    "test.watch": "stencil test --spec --e2e --watchAll"
+    "test.watch": "stencil test --spec --e2e --watchAll",
+    "prerelease": "npm run build",
+    "release": "np"
   },
   "dependencies": {},
   "devDependencies": {
-    "@stencil/core": "~0.14.1"
+    "@stencil/core": "~0.14.1",
+    "np": "^3.0.4"
   },
   "repository": {
     "type": "git",
