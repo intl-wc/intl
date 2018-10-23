@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Stencil Component Starter</title>
+  <script src="/build/mycomponent.js"></script>
+
+</head>
+<body>
+
+  <intl-datetime></intl-datetime>
+  <intl-number></intl-number>
+  
+  <intl-plural number="1">
+    <span slot="one">dog</span>
+    <span> dogs </span>
+  </intl-plural>
+
+  <div>
+    42
+    <intl-plural locale="en-US" type="ordinal">
+      <span slot="one">st</span>
+      <span slot="two">nd</span>
+      <span slot="few">rd</span>
+      <span>th</span>
+    </intl-plural>
+  </div>
+
+  <intl-relative-time></intl-relative-time>
+
+</body>
+</html>
