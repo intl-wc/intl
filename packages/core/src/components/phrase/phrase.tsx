@@ -1,4 +1,4 @@
-import { Component, Prop, State, Element } from '@stencil/core';
+import { Component, Prop, State, Element, Watch } from '@stencil/core';
 
 
 @Component({
@@ -11,15 +11,37 @@ export class Phrase {
     private io: IntersectionObserver;
 
     @State() inGroup = false;
+    @State() replacements: Map<string, string>;
     @State() value: string = '';
     @State() error: string = '';
     @State() resolvedName: string = '';
     
+    @Prop({ connect: 'intl-dictionary' }) dict: HTMLIntlDictionaryElement;
+    
     @Prop({ mutable: true }) lang: string;
+    
     @Prop() name: string;
     @Prop() lazy: boolean = true;
+
+    @Prop() replace: string | { [key: string]: any };
+    @Watch('replace')
+    replaceChanged() {
+        switch (typeof this.replace) {
+            case 'string':
+                try {
+                    const obj = JSON.parse(this.replace as string);
+                    this.replacements = new Map(Object.entries(obj));
+                } catch (e) {
+                    throw new Error(`Invalid value for "replace" in <intl-phrase>. "replace" must either be an object or a valid JSON string.`);
+                }
+                break;
+            case 'object':
+                this.replacements = new Map(Object.entries(this.replace));
+                break;
+            default: throw new Error(`Invalid value for "replace" in <intl-phrase>. "replace" must either be an object or a valid JSON string.`);
+        }
+    }
     
-    @Prop({ connect: 'intl-dictionary' }) dict: HTMLIntlDictionaryElement;
 
     async componentWillLoad() {
         this.addIO();
