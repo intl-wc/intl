@@ -70,15 +70,23 @@ export class Phrase {
     private async resolveValue() {
         const { resolvedName: name, lang } = this;
         const dict = await this.dict.componentOnReady();
-        const value = await dict.resolvePhrase(name, lang);
-
-        console.log(name, value);
+        const value = this.replaceValue(await dict.resolvePhrase(name, lang));
 
         if (value !== false && value !== undefined) {
             this.value = value;
         } else {
             this.error = this.name;
         }
+    }
+
+    private replaceValue(value: string | false) {
+        if (!this.replacements || value === false) return value;
+
+        const hbs = /{{\s*([^}}\s]*)\s*}}/g;
+        return (value as string).replace(hbs, (matched, ident) => {
+            return this.replacements.has(ident) ? this.replacements.get(ident).toString() : matched;
+        })
+
     }
 
     private addIO() {
