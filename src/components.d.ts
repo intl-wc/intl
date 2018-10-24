@@ -15,8 +15,27 @@ export namespace Components {
   interface IntlDatetime {}
   interface IntlDatetimeAttributes extends StencilHTMLAttributes {}
 
+  interface IntlDictionary {
+    'lang': string;
+    'resolvePhrase': (name: string, lang?: string) => Promise<string | false>;
+    'src': string;
+  }
+  interface IntlDictionaryAttributes extends StencilHTMLAttributes {
+    'lang'?: string;
+    'src'?: string;
+  }
+
   interface IntlNumber {}
   interface IntlNumberAttributes extends StencilHTMLAttributes {}
+
+  interface IntlPhrase {
+    'lang': string;
+    'name': string;
+  }
+  interface IntlPhraseAttributes extends StencilHTMLAttributes {
+    'lang'?: string;
+    'name'?: string;
+  }
 
   interface IntlPlural {
     'format': () => void;
@@ -63,14 +82,18 @@ export namespace Components {
 declare global {
   interface StencilElementInterfaces {
     'IntlDatetime': Components.IntlDatetime;
+    'IntlDictionary': Components.IntlDictionary;
     'IntlNumber': Components.IntlNumber;
+    'IntlPhrase': Components.IntlPhrase;
     'IntlPlural': Components.IntlPlural;
     'IntlRelativeTime': Components.IntlRelativeTime;
   }
 
   interface StencilIntrinsicElements {
     'intl-datetime': Components.IntlDatetimeAttributes;
+    'intl-dictionary': Components.IntlDictionaryAttributes;
     'intl-number': Components.IntlNumberAttributes;
+    'intl-phrase': Components.IntlPhraseAttributes;
     'intl-plural': Components.IntlPluralAttributes;
     'intl-relative-time': Components.IntlRelativeTimeAttributes;
   }
@@ -82,10 +105,22 @@ declare global {
     new (): HTMLIntlDatetimeElement;
   };
 
+  interface HTMLIntlDictionaryElement extends Components.IntlDictionary, HTMLStencilElement {}
+  var HTMLIntlDictionaryElement: {
+    prototype: HTMLIntlDictionaryElement;
+    new (): HTMLIntlDictionaryElement;
+  };
+
   interface HTMLIntlNumberElement extends Components.IntlNumber, HTMLStencilElement {}
   var HTMLIntlNumberElement: {
     prototype: HTMLIntlNumberElement;
     new (): HTMLIntlNumberElement;
+  };
+
+  interface HTMLIntlPhraseElement extends Components.IntlPhrase, HTMLStencilElement {}
+  var HTMLIntlPhraseElement: {
+    prototype: HTMLIntlPhraseElement;
+    new (): HTMLIntlPhraseElement;
   };
 
   interface HTMLIntlPluralElement extends Components.IntlPlural, HTMLStencilElement {}
@@ -102,14 +137,18 @@ declare global {
 
   interface HTMLElementTagNameMap {
     'intl-datetime': HTMLIntlDatetimeElement
+    'intl-dictionary': HTMLIntlDictionaryElement
     'intl-number': HTMLIntlNumberElement
+    'intl-phrase': HTMLIntlPhraseElement
     'intl-plural': HTMLIntlPluralElement
     'intl-relative-time': HTMLIntlRelativeTimeElement
   }
 
   interface ElementTagNameMap {
     'intl-datetime': HTMLIntlDatetimeElement;
+    'intl-dictionary': HTMLIntlDictionaryElement;
     'intl-number': HTMLIntlNumberElement;
+    'intl-phrase': HTMLIntlPhraseElement;
     'intl-plural': HTMLIntlPluralElement;
     'intl-relative-time': HTMLIntlRelativeTimeElement;
   }

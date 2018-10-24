@@ -9,19 +9,21 @@
 </head>
 <body>
 
+  <intl-dictionary src='/assets/i18n'></intl-dictionary>
+
   <intl-datetime></intl-datetime>
   <intl-number></intl-number>
   
   <intl-plural value="2">
-    <span slot="one">dog</span>
-    <span> dogs </span>
+    <intl-phrase slot="one" name="DOG_SINGULAR"></intl-phrase>
+    <intl-phrase name="DOG_PLURAL"></intl-phrase>
   </intl-plural>
 
-  <intl-plural type="ordinal" value="1">
-    <span slot="one">st</span>
-    <span slot="two">nd</span>
-    <span slot="few">rd</span>
-    <span>th</span>
+  <intl-plural type="ordinal" value="4">
+    <intl-phrase slot="one" name="ORDINAL_ONE"></intl-phrase>
+    <intl-phrase slot="two" name="ORDINAL_TWO"></intl-phrase>
+    <intl-phrase slot="few" name="ORDINAL_FEW"></intl-phrase>
+    <intl-phrase name="ORDINAL_DEFAULT"></intl-phrase>
   </intl-plural>
 
   <intl-relative-time></intl-relative-time>

@@ -17,6 +17,7 @@ export class Dictionary {
     async componentWillLoad() {
         this.dicts = new Map();
         if (!this.lang) this.lang = this.element.closest('[lang]').getAttribute('lang');
+        if (!this.src) throw new Error('<intl-dictionary> requires a `src` attribute. Did you forget to include an <intl-dictionary> element in your app root?')
         await this.fetchDictionary();
     }
 
