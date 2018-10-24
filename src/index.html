@@ -12,19 +12,17 @@
   <intl-datetime></intl-datetime>
   <intl-number></intl-number>
   
-  <intl-plural number="1">
+  <intl-plural value="2">
     <span slot="one">dog</span>
     <span> dogs </span>
   </intl-plural>
 
-  <div>
-    1<intl-plural type="ordinal">
-      <span slot="one">st</span>
-      <span slot="two">nd</span>
-      <span slot="few">rd</span>
-      <span>th</span>
-    </intl-plural>
-  </div>
+  <intl-plural type="ordinal" value="1">
+    <span slot="one">st</span>
+    <span slot="two">nd</span>
+    <span slot="few">rd</span>
+    <span>th</span>
+  </intl-plural>
 
   <intl-relative-time></intl-relative-time>
 

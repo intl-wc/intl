@@ -29,13 +29,13 @@ export namespace Components {
     */
     'localeMatcher'?: 'lookup' | 'best fit';
     /**
-    * An integer value which will be passed to `Intl.PluralRules`  If omitted, the componenet will automatically look for an integer value in the parent element, like so: ```html <div>   42   <intl-plural locale="en-US" type="ordinal">     <span slot="one">st</span>     <span slot="two">nd</span>     <span slot="few">rd</span>     <span>th</span>   </intl-plural> </div>      ```
-    */
-    'number': string;
-    /**
     * The `type` that will be passed to `Intl.PluralRules`  Possible options are `cardinal` (default) or `ordinal`
     */
     'type'?: 'cardinal' | 'ordinal';
+    /**
+    * An integer value which will be passed to `Intl.PluralRules`  If omitted, the componenet will automatically look for an integer value in the parent element, like so: ```html <div>   42   <intl-plural locale="en-US" type="ordinal">     <span slot="one">st</span>     <span slot="two">nd</span>     <span slot="few">rd</span>     <span>th</span>   </intl-plural> </div>      ```
+    */
+    'value': string;
   }
   interface IntlPluralAttributes extends StencilHTMLAttributes {
     /**
@@ -47,13 +47,13 @@ export namespace Components {
     */
     'localeMatcher'?: 'lookup' | 'best fit';
     /**
-    * An integer value which will be passed to `Intl.PluralRules`  If omitted, the componenet will automatically look for an integer value in the parent element, like so: ```html <div>   42   <intl-plural locale="en-US" type="ordinal">     <span slot="one">st</span>     <span slot="two">nd</span>     <span slot="few">rd</span>     <span>th</span>   </intl-plural> </div>      ```
-    */
-    'number'?: string;
-    /**
     * The `type` that will be passed to `Intl.PluralRules`  Possible options are `cardinal` (default) or `ordinal`
     */
     'type'?: 'cardinal' | 'ordinal';
+    /**
+    * An integer value which will be passed to `Intl.PluralRules`  If omitted, the componenet will automatically look for an integer value in the parent element, like so: ```html <div>   42   <intl-plural locale="en-US" type="ordinal">     <span slot="one">st</span>     <span slot="two">nd</span>     <span slot="few">rd</span>     <span>th</span>   </intl-plural> </div>      ```
+    */
+    'value'?: string;
   }
 
   interface IntlRelativeTime {}

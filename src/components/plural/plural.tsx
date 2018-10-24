@@ -34,7 +34,7 @@ export class Plural {
 
     @Element() el: HTMLElement;
     @State() formatter: Intl.PluralRules;
-    @State() value: string;
+    @State() result: string;
 
     /** 
      * An integer value which will be passed to `Intl.PluralRules`
@@ -53,7 +53,7 @@ export class Plural {
 </div>
      ```
      */
-    @Prop({ mutable: true }) number: string;
+    @Prop({ mutable: true }) value: string;
     /** 
      * The `localeMatcher` that will be passed to `Intl.PluralRules` 
      * 
@@ -87,13 +87,14 @@ export class Plural {
     componentWillLoad() {
         this.langChanged();
         this.setFormatter();
-        if (!this.number) this.number = this.el.parentElement.innerText.trim();
+        if (!this.value) this.value = this.el.parentElement.innerText.trim();
         this.format();
     }
 
     @Method()
     format() {
-        this.value = this.formatter.select(Number.parseInt(this.number));
+        this.result = this.formatter.select(Number.parseInt(this.value));
+        console.log(this.formatter.resolvedOptions());
     }
 
     private setFormatter() {
@@ -104,9 +105,9 @@ export class Plural {
     }
 
     render() {
-        switch (this.value) {
+        switch (this.result) {
             case 'other': return <slot />
-            default: return <slot name={this.value}/>
+            default: return <slot name={this.result}/>
         }
     }
 }
