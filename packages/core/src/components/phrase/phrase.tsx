@@ -47,7 +47,10 @@ export class Phrase {
         this.addIO();
         await this.resolveName();
 
-        if (!this.lang) this.lang = this.element.closest('[lang]').getAttribute('lang');
+        if (!this.lang) {
+            const closest = this.element.closest('[lang]');
+            if (closest) this.lang = closest.getAttribute('lang');
+        }
     }
 
     componentWillUnload() {
