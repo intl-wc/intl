@@ -1,4 +1,5 @@
 {
+    "app-title": "Stencil App Starter",
     "greeting": "Hello, world!",
     "my-name-is": "My name is {{ name }}.",
     "my-name-origin": "My name was passed in through a route param!",

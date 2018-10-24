@@ -21,8 +21,7 @@ export class AppProfile {
       return (
         <div class="app-profile">
           <p>
-            <intl-phrase name="my-name-is" template={{ name: this.normalize(this.match.params.name) }} />
-            <intl-phrase name="my-name-origin" />
+            <intl-phrase name="my-name-is" replace={{ name: this.normalize(this.match.params.name) }} /> <intl-phrase name="my-name-origin" />
           </p>
         </div>
       );

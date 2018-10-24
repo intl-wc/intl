@@ -45,6 +45,7 @@ export class Phrase {
 
     async componentWillLoad() {
         this.addIO();
+        if (this.replace) this.replaceChanged();
         await this.resolveName();
 
         if (!this.lang) {
@@ -83,13 +84,13 @@ export class Phrase {
     }
 
     private replaceValue(value: string | false) {
-        if (!this.replacements || value === false) return value;
+        if (value === false) return value;
 
         const hbs = /{{\s*([^}}\s]*)\s*}}/g;
         return (value as string).replace(hbs, (matched, ident) => {
+            console.log({ [ident]: this.replacements.get(ident) })
             return this.replacements.has(ident) ? this.replacements.get(ident).toString() : matched;
-        })
-
+        });
     }
 
     private addIO() {

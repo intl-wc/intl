@@ -1,6 +1,8 @@
 {
+    "app-title": "Aplicación de Stencil",
     "greeting": "¡Hola!",
-    "my-name": "Mi llamo {{ name }}.",
+    "my-name-is": "Mi llamo {{ name }}.",
+    "my-name-origin": "¡Mi nombre fue pasada a través de un parámetro ruta!",
     "pet": {
         "dog": {
             "singular": "perro",
