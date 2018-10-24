@@ -1,35 +1,8 @@
 {
-  "name": "@intl/core",
-  "version": "0.0.1-alpha.0",
-  "description": "Modern, standards-based web components for displaying dates, numbers, and relative times",
-  "module": "dist/esm/index.js",
-  "main": "dist/index.js",
-  "types": "dist/types/components.d.ts",
-  "collection": "dist/collection/collection-manifest.json",
-  "files": [
-    "dist/"
-  ],
-  "scripts": {
-    "build": "stencil build",
-    "start": "stencil build --dev --watch --serve",
-    "test": "stencil test --spec --e2e",
-    "test.watch": "stencil test --spec --e2e --watchAll",
-    "prerelease": "npm run build",
-    "release": "np"
-  },
-  "dependencies": {},
+  "name": "intl",
+  "private": true,
   "devDependencies": {
-    "@stencil/core": "~0.14.1",
-    "np": "^3.0.4"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/intl-wc/intl.git"
-  },
-  "author": "Nate Moore",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/intl-wc/intl"
-  },
-  "homepage": "https://github.com/intl-wc/intl"
+    "@stencil/core": "^0.14.2",
+    "lerna": "^3.4.3"
+  }
 }
