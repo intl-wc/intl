@@ -35,17 +35,6 @@ export namespace Components {
     'name'?: string;
   }
 
-  interface IntlPhrase {
-    'lang': string;
-    'lazy': boolean;
-    'name': string;
-  }
-  interface IntlPhraseAttributes extends StencilHTMLAttributes {
-    'lang'?: string;
-    'lazy'?: boolean;
-    'name'?: string;
-  }
-
   interface IntlPlural {
     'format': () => void;
     /**
@@ -94,7 +83,6 @@ declare global {
     'IntlDictionary': Components.IntlDictionary;
     'IntlNumber': Components.IntlNumber;
     'IntlPhraseGroup': Components.IntlPhraseGroup;
-    'IntlPhrase': Components.IntlPhrase;
     'IntlPlural': Components.IntlPlural;
     'IntlRelativeTime': Components.IntlRelativeTime;
   }
@@ -104,7 +92,6 @@ declare global {
     'intl-dictionary': Components.IntlDictionaryAttributes;
     'intl-number': Components.IntlNumberAttributes;
     'intl-phrase-group': Components.IntlPhraseGroupAttributes;
-    'intl-phrase': Components.IntlPhraseAttributes;
     'intl-plural': Components.IntlPluralAttributes;
     'intl-relative-time': Components.IntlRelativeTimeAttributes;
   }
@@ -134,12 +121,6 @@ declare global {
     new (): HTMLIntlPhraseGroupElement;
   };
 
-  interface HTMLIntlPhraseElement extends Components.IntlPhrase, HTMLStencilElement {}
-  var HTMLIntlPhraseElement: {
-    prototype: HTMLIntlPhraseElement;
-    new (): HTMLIntlPhraseElement;
-  };
-
   interface HTMLIntlPluralElement extends Components.IntlPlural, HTMLStencilElement {}
   var HTMLIntlPluralElement: {
     prototype: HTMLIntlPluralElement;
@@ -157,7 +138,6 @@ declare global {
     'intl-dictionary': HTMLIntlDictionaryElement
     'intl-number': HTMLIntlNumberElement
     'intl-phrase-group': HTMLIntlPhraseGroupElement
-    'intl-phrase': HTMLIntlPhraseElement
     'intl-plural': HTMLIntlPluralElement
     'intl-relative-time': HTMLIntlRelativeTimeElement
   }
@@ -167,7 +147,6 @@ declare global {
     'intl-dictionary': HTMLIntlDictionaryElement;
     'intl-number': HTMLIntlNumberElement;
     'intl-phrase-group': HTMLIntlPhraseGroupElement;
-    'intl-phrase': HTMLIntlPhraseElement;
     'intl-plural': HTMLIntlPluralElement;
     'intl-relative-time': HTMLIntlRelativeTimeElement;
   }

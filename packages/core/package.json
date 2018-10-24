@@ -10,16 +10,14 @@
     "dist/"
   ],
   "scripts": {
-    "build": "stencil build",
-    "start": "stencil build --dev --watch --serve",
-    "test": "stencil test --spec --e2e",
-    "test.watch": "stencil test --spec --e2e --watchAll",
-    "prerelease": "npm run build",
-    "release": "np"
+    "build": "../../node_modules/.bin/stencil build",
+    "start": "../../node_modules/.bin/stencil build --dev --watch",
+    "test": "../../node_modules/.bin/stencil test --spec --e2e",
+    "test.watch": "../../node_modules/.bin/stencil test --spec --e2e --watchAll",
+    "release": "npm run build && np"
   },
   "dependencies": {},
   "devDependencies": {
-    "@stencil/core": "~0.14.1",
     "np": "^3.0.4"
   },
   "repository": {

@@ -1,0 +1,26 @@
+{
+  "name": "@intl/demo",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Stencil App Starter",
+  "scripts": {
+    "build": "../../node_modules/.bin/stencil build",
+    "start": "../../node_modules/.bin/stencil build --dev --watch --serve",
+    "test": "../../node_modules/.bin/stencil test --spec --e2e",
+    "test.watch": "../../node_modules/.bin/stencil test --spec --e2e --watchAll"
+  },
+  "dependencies": {
+    "@intl/core": "^0.0.1-alpha.0",
+    "@stencil/router": "~0.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ionic-team/stencil-app-starter.git"
+  },
+  "author": "Ionic Team",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ionic-team/stencil"
+  },
+  "homepage": "https://github.com/ionic-team/stencil"
+}

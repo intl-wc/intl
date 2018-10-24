@@ -2,7 +2,7 @@
   "name": "intl",
   "private": true,
   "devDependencies": {
-    "@stencil/core": "^0.14.2",
+    "@stencil/core": "~0.14.2",
     "lerna": "^3.4.3"
   }
 }

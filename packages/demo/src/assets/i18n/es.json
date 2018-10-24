@@ -1,0 +1,18 @@
+{
+    "greeting": "¡Hola!",
+    "my-name": "Mi llamo {{ name }}.",
+    "pet": {
+        "dog": {
+            "singular": "perro",
+            "plural": "perros"
+        },
+        "cat": {
+            "singular": "gato",
+            "plural": "gatos"
+        }
+    },
+    "ordinals": {
+        "1": "primero",
+        "2": "segundo"
+    }
+}

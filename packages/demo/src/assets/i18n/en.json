@@ -1,0 +1,19 @@
+{
+    "greeting": "Hello, world!",
+    "my-name-is": "My name is {{ name }}.",
+    "my-name-origin": "My name was passed in through a route param!",
+    "pet": {
+        "dog": {
+            "singular": "dog",
+            "plural": "dogs"
+        },
+        "cat": {
+            "singular": "cat",
+            "plural": "cats"
+        }
+    },
+    "ordinals": {
+        "1": "first",
+        "2": "second"
+    }
+}
