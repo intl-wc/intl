@@ -36,8 +36,15 @@ export class Dictionary {
         if (!this.dicts.has(lang)) await this.fetchDictionary(lang); 
         const dict = this.dicts.get(lang);
         
-        if (dict && dict.has(name)) {
-            return dict.get(name);
+        const [key, ...parts] = name.split('.').map(x => x.trim()).filter(x => x);
+        if (dict && dict.has(key)) {
+            const values = dict.get(key);
+            if (parts.length) {
+                let resolved = parts.reduce((o, i) => o[i], dict.get(key));
+                return (typeof values === 'object' && typeof resolved === 'string') ? resolved : false;
+            } else {
+                return (typeof values === 'string') ? values : false;
+            }
         } else {
             return false;
         }

@@ -1,0 +1,12 @@
+{
+    "dog": {
+        "singular": "dog",
+        "plural": "dogs"
+    },
+    "ordinal": {
+        "default": "th",
+        "one": "st",
+        "two": "nd",
+        "few": "rd"
+    }
+}

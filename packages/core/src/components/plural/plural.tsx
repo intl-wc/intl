@@ -54,6 +54,11 @@ export class Plural {
      ```
      */
     @Prop({ mutable: true }) value: string;
+    @Watch('value')
+    onValueChanged() {
+        this.format();
+    }
+
     /** 
      * The `localeMatcher` that will be passed to `Intl.PluralRules` 
      * 
@@ -87,14 +92,18 @@ export class Plural {
     componentWillLoad() {
         this.langChanged();
         this.setFormatter();
-        if (!this.value) this.value = this.el.parentElement.innerText.trim();
-        this.format();
+        if (this.value === undefined) {
+            (this.el.parentElement as HTMLStencilElement).componentOnReady().then((parent) => {
+                this.value = parent.innerText.trim();
+            });
+        } else {
+            this.onValueChanged();
+        }
     }
 
     @Method()
     format() {
         this.result = this.formatter.select(Number.parseInt(this.value));
-        console.log(this.formatter.resolvedOptions());
     }
 
     private setFormatter() {

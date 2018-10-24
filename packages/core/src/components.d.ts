@@ -28,12 +28,21 @@ export namespace Components {
   interface IntlNumber {}
   interface IntlNumberAttributes extends StencilHTMLAttributes {}
 
+  interface IntlPhraseGroup {
+    'name': string;
+  }
+  interface IntlPhraseGroupAttributes extends StencilHTMLAttributes {
+    'name'?: string;
+  }
+
   interface IntlPhrase {
     'lang': string;
+    'lazy': boolean;
     'name': string;
   }
   interface IntlPhraseAttributes extends StencilHTMLAttributes {
     'lang'?: string;
+    'lazy'?: boolean;
     'name'?: string;
   }
 
@@ -84,6 +93,7 @@ declare global {
     'IntlDatetime': Components.IntlDatetime;
     'IntlDictionary': Components.IntlDictionary;
     'IntlNumber': Components.IntlNumber;
+    'IntlPhraseGroup': Components.IntlPhraseGroup;
     'IntlPhrase': Components.IntlPhrase;
     'IntlPlural': Components.IntlPlural;
     'IntlRelativeTime': Components.IntlRelativeTime;
@@ -93,6 +103,7 @@ declare global {
     'intl-datetime': Components.IntlDatetimeAttributes;
     'intl-dictionary': Components.IntlDictionaryAttributes;
     'intl-number': Components.IntlNumberAttributes;
+    'intl-phrase-group': Components.IntlPhraseGroupAttributes;
     'intl-phrase': Components.IntlPhraseAttributes;
     'intl-plural': Components.IntlPluralAttributes;
     'intl-relative-time': Components.IntlRelativeTimeAttributes;
@@ -117,6 +128,12 @@ declare global {
     new (): HTMLIntlNumberElement;
   };
 
+  interface HTMLIntlPhraseGroupElement extends Components.IntlPhraseGroup, HTMLStencilElement {}
+  var HTMLIntlPhraseGroupElement: {
+    prototype: HTMLIntlPhraseGroupElement;
+    new (): HTMLIntlPhraseGroupElement;
+  };
+
   interface HTMLIntlPhraseElement extends Components.IntlPhrase, HTMLStencilElement {}
   var HTMLIntlPhraseElement: {
     prototype: HTMLIntlPhraseElement;
@@ -139,6 +156,7 @@ declare global {
     'intl-datetime': HTMLIntlDatetimeElement
     'intl-dictionary': HTMLIntlDictionaryElement
     'intl-number': HTMLIntlNumberElement
+    'intl-phrase-group': HTMLIntlPhraseGroupElement
     'intl-phrase': HTMLIntlPhraseElement
     'intl-plural': HTMLIntlPluralElement
     'intl-relative-time': HTMLIntlRelativeTimeElement
@@ -148,6 +166,7 @@ declare global {
     'intl-datetime': HTMLIntlDatetimeElement;
     'intl-dictionary': HTMLIntlDictionaryElement;
     'intl-number': HTMLIntlNumberElement;
+    'intl-phrase-group': HTMLIntlPhraseGroupElement;
     'intl-phrase': HTMLIntlPhraseElement;
     'intl-plural': HTMLIntlPluralElement;
     'intl-relative-time': HTMLIntlRelativeTimeElement;

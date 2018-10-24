@@ -14,17 +14,22 @@
   <intl-datetime></intl-datetime>
   <intl-number></intl-number>
   
-  <intl-plural value="2">
-    <intl-phrase slot="one" name="DOG_SINGULAR"></intl-phrase>
-    <intl-phrase name="DOG_PLURAL"></intl-phrase>
-  </intl-plural>
+  <intl-phrase-group name="dog">
+    <intl-plural value="1">
+      <intl-phrase slot="one" name="singular"></intl-phrase>
+      <intl-phrase name="plural"></intl-phrase>
+    </intl-plural>
+  </intl-phrase-group>
 
-  <intl-plural type="ordinal" value="4">
-    <intl-phrase slot="one" name="ORDINAL_ONE"></intl-phrase>
-    <intl-phrase slot="two" name="ORDINAL_TWO"></intl-phrase>
-    <intl-phrase slot="few" name="ORDINAL_FEW"></intl-phrase>
-    <intl-phrase name="ORDINAL_DEFAULT"></intl-phrase>
-  </intl-plural>
+
+  <intl-phrase-group name="ordinal">
+    <intl-plural type="ordinal" value="1">
+      <intl-phrase slot="one" name="one"></intl-phrase>
+      <intl-phrase slot="two" name="two"></intl-phrase>
+      <intl-phrase slot="few" name="few"></intl-phrase>
+      <intl-phrase name="default"></intl-phrase>
+    </intl-plural>
+  </intl-phrase-group>
 
   <intl-relative-time></intl-relative-time>
 
