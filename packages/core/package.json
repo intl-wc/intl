@@ -1,11 +1,12 @@
 {
   "name": "@intl/core",
-  "version": "0.0.1-alpha.0",
+  "version": "0.0.1-alpha.1",
   "description": "Modern, standards-based web components for displaying dates, numbers, and relative times",
   "module": "dist/esm/index.js",
   "main": "dist/index.js",
-  "types": "dist/types/components.d.ts",
+  "types": "dist/types/index.d.ts",
   "collection": "dist/collection/collection-manifest.json",
+  "unpkg": "dist/intl.js",
   "files": [
     "dist/"
   ],

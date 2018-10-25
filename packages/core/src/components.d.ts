@@ -13,7 +13,7 @@ import '@stencil/core';
 export namespace Components {
 
   interface IntlController {
-    'set': (lang: string) => void;
+    'setLanguage': (lang: string) => void;
   }
   interface IntlControllerAttributes extends StencilHTMLAttributes {}
 
@@ -27,6 +27,7 @@ export namespace Components {
   }
   interface IntlDictionaryAttributes extends StencilHTMLAttributes {
     'lang'?: string;
+    'onIntlLangChange'?: (event: CustomEvent<string>) => void;
     'src'?: string;
   }
 
@@ -70,7 +71,7 @@ export namespace Components {
     /**
     * An integer value which will be passed to `Intl.PluralRules`  If omitted, the componenet will automatically look for an integer value in the parent element, like so: ```html <div>   42   <intl-plural locale="en-US" type="ordinal">     <span slot="one">st</span>     <span slot="two">nd</span>     <span slot="few">rd</span>     <span>th</span>   </intl-plural> </div>      ```
     */
-    'value': string;
+    'value': number|string;
   }
   interface IntlPluralAttributes extends StencilHTMLAttributes {
     /**
@@ -88,7 +89,7 @@ export namespace Components {
     /**
     * An integer value which will be passed to `Intl.PluralRules`  If omitted, the componenet will automatically look for an integer value in the parent element, like so: ```html <div>   42   <intl-plural locale="en-US" type="ordinal">     <span slot="one">st</span>     <span slot="two">nd</span>     <span slot="few">rd</span>     <span>th</span>   </intl-plural> </div>      ```
     */
-    'value'?: string;
+    'value'?: number|string;
   }
 
   interface IntlRelativeTime {}

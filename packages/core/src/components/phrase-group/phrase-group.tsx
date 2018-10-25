@@ -2,8 +2,7 @@ import { Component, Prop } from '@stencil/core';
 
 
 @Component({
-    tag: 'intl-phrase-group',
-    shadow: true
+    tag: 'intl-phrase-group'
 })
 export class PhraseGroup {
 

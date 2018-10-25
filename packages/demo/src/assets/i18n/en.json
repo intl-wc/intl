@@ -1,9 +1,27 @@
 {
-    "app-title": "Stencil App Starter",
+    "lang": {
+        "en": "English",
+        "es": "Spanish"
+    },
+    "app-title": "Stencil – App Starter",
     "greeting": "Hello, world!",
-    "my-name-is": "My name is {{ name }}.",
-    "my-name-origin": "My name was passed in through a route param!",
-    "pet": {
+    "welcome": "Welcome to the Stencil App Starter.",
+    "build": "You can use this starter to build entire apps all with web components using Stencil!",
+    "docs": {
+        "start": "Check out our docs on",
+        "end": "to get started."
+    },
+    "profile-link": "Profile Page",
+    "my-name": {
+        "is": "My name is {{ name }}.",
+        "origin": "My name was passed in through a route param!"
+    },
+    "pets": {
+        "feeling": "I love",
+        "possession": {
+            "singular": "my",
+            "plural": "my"
+        },
         "dog": {
             "singular": "dog",
             "plural": "dogs"
@@ -11,10 +29,10 @@
         "cat": {
             "singular": "cat",
             "plural": "cats"
+        },
+        "lizard": {
+            "singular": "lizard",
+            "plural": "lizards"
         }
-    },
-    "ordinals": {
-        "1": "first",
-        "2": "second"
     }
 }

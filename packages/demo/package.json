@@ -10,7 +10,7 @@
     "test.watch": "../../node_modules/.bin/stencil test --spec --e2e --watchAll"
   },
   "dependencies": {
-    "@intl/core": "^0.0.1-alpha.0",
+    "@intl/core": "^0.0.1-alpha.1",
     "@stencil/router": "~0.3.0"
   },
   "repository": {

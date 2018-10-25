@@ -1,4 +1,4 @@
-import { Component, Prop, State, Element, Watch } from '@stencil/core';
+import { Component, Prop, State, Element, Watch, Listen } from '@stencil/core';
 
 
 @Component({
@@ -20,8 +20,14 @@ export class Phrase {
     
     @Prop({ mutable: true }) lang: string;
     
-    @Prop() name: string;
     @Prop() lazy: boolean = true;
+
+    @Prop() name: string;
+    @Watch('name')
+    async nameChanged() {
+        await this.resolveName();
+        this.addIO();
+    }
 
     @Prop() replace: string | { [key: string]: any };
     @Watch('replace')
@@ -41,17 +47,17 @@ export class Phrase {
             default: throw new Error(`Invalid value for "replace" in <intl-phrase>. "replace" must either be an object or a valid JSON string.`);
         }
     }
-    
+
+    @Listen('document:intlLangChange')
+    protected langChangeHandler() {
+        this.addIO();
+    }
+
 
     async componentWillLoad() {
         this.addIO();
         if (this.replace) this.replaceChanged();
         await this.resolveName();
-
-        if (!this.lang) {
-            const closest = this.element.closest('[lang]');
-            if (closest) this.lang = closest.getAttribute('lang');
-        }
     }
 
     componentWillUnload() {
@@ -59,16 +65,17 @@ export class Phrase {
     }
 
     private async resolveName() {
-        const groupEl = this.element.closest('intl-phrase-group');
-        let group: HTMLIntlPhraseGroupElement;
-        if (groupEl) {
-            this.inGroup = true;
-            group = await groupEl.componentOnReady();
-            this.resolvedName = `${group.name}.${this.name}`;
-        } else {
-            this.resolvedName = this.name;
-        }
-        return Promise.resolve();
+        return new Promise((resolve) => {
+            const group = this.element.closest('intl-phrase-group');
+            if (group) {
+                this.inGroup = true;
+                this.resolvedName = `${group.name}.${this.name}`;
+                resolve();
+            } else {
+                this.resolvedName = this.name;
+                resolve();
+            }
+        })
     }
 
     private async resolveValue() {

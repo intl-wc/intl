@@ -53,10 +53,12 @@ export class Plural {
 </div>
      ```
      */
-    @Prop({ mutable: true }) value: string;
+    @Prop({ mutable: true }) value: number|string;
     @Watch('value')
     onValueChanged() {
-        this.format();
+        if (typeof this.value === 'number') this.format();
+        
+        this.value = Number.parseInt(this.value as string);
     }
 
     /** 
@@ -103,7 +105,7 @@ export class Plural {
 
     @Method()
     format() {
-        this.result = this.formatter.select(Number.parseInt(this.value));
+        this.result = this.formatter.select(this.value as number);
     }
 
     private setFormatter() {

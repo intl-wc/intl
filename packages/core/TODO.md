@@ -1,0 +1,1 @@
+- Need a way to access translated value directly in JS, for example, to be used as an `<option label="value">`
