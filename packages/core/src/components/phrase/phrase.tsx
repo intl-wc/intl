@@ -95,7 +95,6 @@ export class Phrase {
 
         const hbs = /{{\s*([^}}\s]*)\s*}}/g;
         return (value as string).replace(hbs, (matched, ident) => {
-            console.log({ [ident]: this.replacements.get(ident) })
             return this.replacements.has(ident) ? this.replacements.get(ident).toString() : matched;
         });
     }

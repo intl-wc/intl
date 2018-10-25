@@ -1,8 +1,5 @@
 import { Component, Prop, State, Method } from '@stencil/core';
 import { MatchResults } from '@stencil/router';
-import * as intl from '@intl/core';
-
-console.log(Object.keys(intl));
 
 @Component({
   tag: 'app-profile',
