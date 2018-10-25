@@ -17,7 +17,7 @@ export async function configExists(): Promise<boolean> {
         
 }
 
-export async function createConfigFile(srcDir?: string, locales?: string[]) {
+export async function createConfig(srcDir?: string, locales?: string[]) {
     let config: { [key: string]: any } = {};
     if (srcDir && srcDir !== defaultConfig.srcDir) config = { ...config, srcDir };
     if (!locales) locales = defaultConfig.locales;
