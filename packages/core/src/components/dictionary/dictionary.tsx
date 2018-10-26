@@ -1,4 +1,5 @@
 import { Component, Element, Prop, Method, Event, EventEmitter, Watch, State } from '@stencil/core';
+import { url } from 'inspector';
 
 interface Lazy {
     lazy: true;
@@ -47,14 +48,20 @@ export class Dictionary {
     async exists(path: string): Promise<string|boolean> {
         try {
             const headers = new Headers();
-            headers.set('Accept', 'application/json');
-            headers.set('Content-Type', 'application/json');
+            headers.append('Accept', 'application/json');
+            headers.append('Content-Type', 'application/json');
 
             return fetch(path, {
                 method: 'HEAD',
                 headers
-            })
-                .then((response) => (response.status === 200 && response.headers.get('Content-Type') === 'application/json') ? response.url : false)
+            }).then((response) => {
+                const { status, url, headers } = response;
+                if (status !== 200) return false;
+                const contentType = headers.get('content-type');
+                const isJSON = (contentType && contentType.includes('application/json'));
+                if (!isJSON) return false;
+                return url;
+                })
         } catch (e) {
             return Promise.resolve(false)
         }
