@@ -70,10 +70,6 @@ export class Dictionary {
         const path = `${this.src.replace(/\/$/, '')}/${lang}.json`;
         return this.exists(path);
     }
-    private isDir(lang: string) {
-        const path = `${this.src.replace(/\/$/, '')}/${lang}`;
-        return this.exists(path);
-    }
     private isDirWithIndex(lang: string) {
         const path = `${this.src.replace(/\/$/, '')}/${lang}/index.json`;
         return this.exists(path);
@@ -91,9 +87,7 @@ export class Dictionary {
                 console.log(...styledPrefix, `Getting a "404 (Not Found)" error?\n      You can safely ignore it! 👉 https://intljs.com/faq#404`);
                 this.hasWarned = true;
             }
-            if (!file && await this.isDir(lang)) {
-                file = await this.isDirWithIndex(lang);
-            }
+            if (!file) file = await this.isDirWithIndex(lang);
 
         } catch (e) { }
         return Promise.resolve(file);
