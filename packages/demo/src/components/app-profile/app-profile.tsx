@@ -64,7 +64,7 @@ export class AppProfile {
           <p>
             
             <intl-phrase-group name="pets">
-              
+
               <intl-phrase name="feeling" />&nbsp;
               
               <intl-plural value={this.value}>
@@ -94,7 +94,7 @@ export class AppProfile {
             }}>
               {
                 ['dog', 'cat', 'lizard'].map((pet) => (
-                  <option value={pet} selected={this.pet === pet} label={pet} />
+                  <option value={pet} selected={this.pet === pet} label={pet}> <intl-phrase name={pet}/> </option>
                 ))
             }
             </select>
