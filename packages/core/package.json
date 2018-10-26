@@ -1,6 +1,6 @@
 {
   "name": "@intl/core",
-  "version": "0.0.1-alpha.4",
+  "version": "0.0.1-alpha.5",
   "description": "Modern, standards-based web components for displaying dates, numbers, and relative times",
   "module": "dist/esm/index.js",
   "main": "dist/index.js",
