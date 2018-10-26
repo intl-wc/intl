@@ -1,5 +1,4 @@
 import { Component, Element, Prop, Method, Event, EventEmitter, Watch, State } from '@stencil/core';
-import { url } from 'inspector';
 
 interface Lazy {
     lazy: true;
