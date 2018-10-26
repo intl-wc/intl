@@ -8,9 +8,11 @@
     ],
     "rewrites": [
       {
-        "source": "**",
+        "source": "**/*.@(jpg|jpeg|gif|png|json)",
         "destination": "/index.html"
       }
-    ]
+    ],
+    "cleanUrls": true,
+    "trailingSlash": false
   }
 }
