@@ -4,14 +4,14 @@
   "version": "0.0.1",
   "description": "Stencil App Starter",
   "scripts": {
-    "build": "../../node_modules/.bin/stencil build",
+    "build": "../../node_modules/.bin/stencil build --service-worker",
     "start": "../../node_modules/.bin/stencil build --dev --watch --serve",
     "test": "../../node_modules/.bin/stencil test --spec --e2e",
     "test.watch": "../../node_modules/.bin/stencil test --spec --e2e --watchAll",
     "deploy": "npm run build && firebase deploy"
   },
   "dependencies": {
-    "@intl/core": "latest",
+    "@intl/core": "next",
     "@stencil/router": "~0.3.0"
   },
   "repository": {
