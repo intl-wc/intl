@@ -46,7 +46,13 @@ export class Dictionary {
 
     async exists(path: string): Promise<string|boolean> {
         try {
-            return fetch(path, { method: 'HEAD' })
+            return fetch(path, {
+                method: 'HEAD',
+                headers: new Headers([
+                    ['Accept', 'application/json'],
+                    ['Content-Type', 'application/json']
+                ])
+            })
                 .then(({ status, url }) => (status === 200) ? url : false)
         } catch (e) {
             return Promise.resolve(false)
