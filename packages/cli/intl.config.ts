@@ -6,4 +6,6 @@ export const config: Config = {
   locales: [ 'en' ]
 };
 
-export interface Schema {}
+export interface Schema {
+  
+}

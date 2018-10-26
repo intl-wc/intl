@@ -7,9 +7,9 @@
 
 import '@stencil/core';
 
-import '@intl/core';
 import '@stencil/router';
 import '@stencil/state-tunnel';
+import '@intl/core';
 import {
   MatchResults,
 } from '@stencil/router';

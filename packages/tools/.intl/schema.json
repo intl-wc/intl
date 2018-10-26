@@ -1,0 +1,40 @@
+{
+  "type": "object",
+  "properties": {
+    "lang": {
+      "description": "The name of languages",
+      "type": "object",
+      "properties": {
+        "en": {
+          "type": "string"
+        },
+        "es": {
+          "type": "string"
+        }
+      }
+    },
+    "preset": {
+      "enum": [
+        "awesome",
+        "bad",
+        "cool"
+      ],
+      "type": "string"
+    },
+    "local": {
+      "type": "object",
+      "properties": {
+        "lazy": {
+          "type": "boolean",
+          "enum": [
+            true
+          ]
+        },
+        "url": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

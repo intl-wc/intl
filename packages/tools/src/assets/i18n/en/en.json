@@ -1,0 +1,7 @@
+{
+    "preset": "awesome",
+    "local": {
+        "lazy": true,
+        "url": "local.json"
+    }
+}

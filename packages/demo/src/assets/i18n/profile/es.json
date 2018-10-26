@@ -1,0 +1,25 @@
+{
+    "my-name": {
+        "is": "Mi llamo {{ name }}.",
+        "origin": "¡Mi nombre fue pasada a través de un parámetro ruta!"
+    },
+    "pets": {
+        "feeling": "Amo a",
+        "possession": {
+            "singular": "mi",
+            "plural": "mis"
+        },
+        "dog": {
+            "singular": "perro",
+            "plural": "perros"
+        },
+        "cat": {
+            "singular": "gato",
+            "plural": "gatos"
+        },
+        "lizard": {
+            "singular": "lagartija",
+            "plural": "lagartos"
+        }
+    }
+}

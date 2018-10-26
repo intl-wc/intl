@@ -56,6 +56,7 @@ export class AppProfile {
     if (this.match && this.match.params.name) {
       return (
         <div class="app-profile">
+          <intl-phrase-group name="profile">
           <p>
             <intl-phrase name="my-name.is" replace={{ name: this.normalize(this.match.params.name) }} /> <intl-phrase name="my-name.origin" />
           </p>
@@ -98,7 +99,8 @@ export class AppProfile {
             }
             </select>
           </div>
-
+        
+          </intl-phrase-group>
         </div>
       );
     }

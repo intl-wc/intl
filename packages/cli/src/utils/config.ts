@@ -1,6 +1,6 @@
-import { resolve } from 'path';
-import { inspect } from 'util';
-import { writeFile, stat } from './fs';
+import { resolve, join } from 'path';
+import { INTL_CONFIG, SRC_DIR_README } from '../templates';
+import { writeFile, fileExists, mkdirp } from './fs';
 
 export const defaultConfig = {
     srcDir: 'src/assets/i18n',
@@ -8,13 +8,15 @@ export const defaultConfig = {
 }
 
 export async function configExists(): Promise<boolean> {
-    const absPath = resolve('.', 'intl.config.ts');
-    try {
-        return await stat(absPath).then(x => x.isFile())
-    } catch (e) {
-        return Promise.resolve(false);
-    }
-        
+    return fileExists('intl.config.ts');
+}
+
+async function createSrcDir(srcDir: string) {
+    srcDir = resolve('.', srcDir);
+    const filePath = join(srcDir, 'README.md');
+    const sourceText = SRC_DIR_README();
+    await mkdirp(srcDir);
+    await writeFile(filePath, sourceText);
 }
 
 export async function createConfig(srcDir?: string, locales?: string[]) {
@@ -23,17 +25,10 @@ export async function createConfig(srcDir?: string, locales?: string[]) {
     if (!locales) locales = defaultConfig.locales;
     config = { ...config, locales };
 
-    const contents = `import { Config } from '@intl/core';
-
-// https://intljs.com/docs/config
-
-export const config: Config = ${inspect(config)
-    .replace(/^{\s?/, '{\n  ')
-    .replace(/\s?}$/, '\n}')
-    .replace(/,\s?/, ',\n  ')};
-
-export interface Schema {}
-`
-    const absPath = resolve('.', 'intl.config.ts');
-    return writeFile(absPath, contents);
+    const sourceText = INTL_CONFIG(config);
+    const filePath = resolve('.', 'intl.config.ts');
+    return Promise.all([
+        writeFile(filePath, sourceText),
+        createSrcDir(srcDir || defaultConfig.srcDir)
+    ]);
 }

@@ -66,7 +66,7 @@ export class Phrase {
 
     private async resolveName() {
         return new Promise((resolve) => {
-            const group = this.element.closest('intl-phrase-group');
+            const group = this.element.parentElement.closest('intl-phrase-group');
             if (group) {
                 this.inGroup = true;
                 this.resolvedName = `${group.name}.${this.name}`;

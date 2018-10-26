@@ -22,14 +22,11 @@ export namespace Components {
 
   interface IntlDictionary {
     'lang': string;
-    'lazy': boolean | string;
-    'lazyloadDictionary': (dictName?: string, lang?: string) => Promise<void>;
-    'resolvePhrase': (name: string, lang?: string) => Promise<string | false>;
+    'resolvePhrase': (name: string, lang?: string) => any;
     'src': string;
   }
   interface IntlDictionaryAttributes extends StencilHTMLAttributes {
     'lang'?: string;
-    'lazy'?: boolean | string;
     'onIntlLangChange'?: (event: CustomEvent<string>) => void;
     'src'?: string;
   }

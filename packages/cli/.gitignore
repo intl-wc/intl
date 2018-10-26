@@ -1,2 +1,5 @@
 node_modules
 dist
+
+# Intl generated schemas (https://intljs.com/docs/schemas)
+.intl/
