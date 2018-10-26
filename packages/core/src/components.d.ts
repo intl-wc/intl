@@ -22,7 +22,7 @@ export namespace Components {
 
   interface IntlDictionary {
     'lang': string;
-    'resolvePhrase': (name: string, lang?: string) => any;
+    'resolvePhrase': (name: string, lang?: string) => Promise<string | false>;
     'src': string;
   }
   interface IntlDictionaryAttributes extends StencilHTMLAttributes {

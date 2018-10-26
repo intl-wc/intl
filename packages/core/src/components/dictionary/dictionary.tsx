@@ -172,7 +172,7 @@ export class Dictionary {
     }
 
     @Method()
-    async resolvePhrase(name: string, lang: string = this.lang) {
+    async resolvePhrase(name: string, lang: string = this.lang): Promise<string|false> {
         if (!this.dicts.has(lang)) await this.fetchDictionary(lang);
         const dict = this.dicts.get(lang);
         
