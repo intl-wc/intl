@@ -46,14 +46,15 @@ export class Dictionary {
 
     async exists(path: string): Promise<string|boolean> {
         try {
+            const headers = new Headers();
+            headers.set('Accept', 'application/json');
+            headers.set('Content-Type', 'application/json');
+
             return fetch(path, {
                 method: 'HEAD',
-                headers: new Headers([
-                    ['Accept', 'application/json'],
-                    ['Content-Type', 'application/json']
-                ])
+                headers
             })
-                .then(({ status, url }) => (status === 200) ? url : false)
+                .then((response) => (response.status === 200 && response.headers.get('Content-Type') === 'application/json') ? response.url : false)
         } catch (e) {
             return Promise.resolve(false)
         }
