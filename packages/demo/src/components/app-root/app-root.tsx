@@ -13,7 +13,6 @@ export class AppRoot {
       <div>
         <header>
           <h1> <intl-phrase name="app-title" /> </h1>
-          <app-language />
         </header>
 
         <main>
@@ -24,6 +23,10 @@ export class AppRoot {
             </stencil-route-switch>
           </stencil-router>
         </main>
+
+        <footer>
+          <app-language />
+        </footer>
       </div>
     );
   }

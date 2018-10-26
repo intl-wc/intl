@@ -1,4 +1,4 @@
-header {
+header, footer {
   background: #5851ff;
   color: white;
   height: 56px;
@@ -14,4 +14,14 @@ h1 {
   font-weight: 500;
   color: #fff;
   padding: 0 12px;
+}
+
+footer {
+  background: #eceff1;
+  color: rgba(0,0,0,0.87);
+  position: absolute;
+  justify-content: center;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }

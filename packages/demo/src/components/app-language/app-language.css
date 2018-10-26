@@ -14,8 +14,8 @@ button {
 }
 
 button {
-  background: #2c26bf;
-  color: white;
+  background: white;
+  color: #5851ff;
   margin: 8px;
   border: none;
   font-size: 13px;
@@ -40,6 +40,6 @@ button:last-of-type {
 }
 
 button.active {
-  background: white;
-  color: #5851ff;
+  background: #5851ff;
+  color: white;
 }
