@@ -12,6 +12,7 @@ interface Lazy {
 })
 export class Dictionary {
     
+    private hasWarned: boolean = false;
     private mo: MutationObserver;
     private dicts: Map<string, Map<string, string|Lazy>> = new Map();
     private requests: Map<string, Promise<void>> = new Map();
@@ -69,9 +70,18 @@ export class Dictionary {
         let file: string | boolean = false;
         try {
             file = await this.isFile(lang);
+            if (!file && !this.hasWarned) {
+                const styledPrefix = [
+                    '%c' + 'INTL',
+                    `background: #ffc107; color: white; padding: 2px 4px; border-radius: 2px; font-size: 0.9em;`
+                ];
+                console.log(...styledPrefix, `Getting a "404 (Not Found)" error?\n      You can safely ignore it! 👉 https://intljs.com/faq#404`);
+                this.hasWarned = true;
+            }
             if (!file && await this.isDir(lang)) {
                 file = await this.isDirWithIndex(lang);
             }
+
         } catch (e) { }
         return Promise.resolve(file);
     }
@@ -144,12 +154,7 @@ export class Dictionary {
             if (this.requests.has(path)) {
                 return this.requests.get(path);
             } else {
-                console.log('Lazy loading ref...', { refName, url, path })
                 const request = fetch(path)
-                    .then(response => {
-                        console.log(response);
-                        return response;
-                    })
                     .then(response => response.json())
                     .then(dict => this.appendToDictionary(lang, refName, dict))
                     .then(() => {
@@ -181,7 +186,6 @@ export class Dictionary {
             }
 
             if (parts.length) {
-                console.log(key, dict.get(key), parts);
                 let resolved = parts.reduce((o, i) => o[i], dict.get(key));
                 return (typeof values === 'object' && typeof resolved === 'string') ? resolved : false;
             } else {
