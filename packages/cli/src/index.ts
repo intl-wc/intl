@@ -1,4 +1,4 @@
-import { init, audit } from './commands';
+import { init, lint, add } from './commands';
 
 async function run() {
     const args = process.argv.slice(2);
@@ -12,8 +12,15 @@ async function run() {
                 break;
             case 'lint':
             case 'audit':
-                audit();
+                lint();
                 break;
+            case 'add':
+            case 'a':
+            case 'generate':
+            case 'g':
+                add(...args.slice(1));
+                break;
+                
             default: throw new Error();
         }
     } catch (e) {

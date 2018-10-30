@@ -4,7 +4,7 @@
   "description": "Modern, standards-based web components for displaying dates, numbers, and relative times",
   "module": "dist/esm/index.js",
   "main": "dist/index.js",
-  "types": "dist/types/index.d.ts",
+  "types": "dist/types/interface.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "unpkg": "dist/intl.js",
   "files": [

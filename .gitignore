@@ -11,6 +11,8 @@ log.txt
 *.sublime-project
 *.sublime-workspace
 
+.firebase/
+.intl/
 .stencil/
 .idea/
 .vscode/

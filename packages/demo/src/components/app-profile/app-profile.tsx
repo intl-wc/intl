@@ -58,7 +58,7 @@ export class AppProfile {
         <div class="app-profile">
           <intl-phrase-group name="profile">
           <p>
-            <intl-phrase name="my-name.is" replace={{ name: this.normalize(this.match.params.name) }} /> <intl-phrase name="my-name.origin" />
+            <intl-phrase name="myName.is" replace={{ name: this.normalize(this.match.params.name) }} /> <intl-phrase name="my-name.origin" />
           </p>
 
           <p>

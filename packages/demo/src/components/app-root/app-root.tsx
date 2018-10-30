@@ -12,7 +12,7 @@ export class AppRoot {
     return (
       <div>
         <header>
-          <h1> <intl-phrase name="app-title" /> </h1>
+          <h1> <intl-phrase name="appTitle" /> </h1>
         </header>
 
         <main>

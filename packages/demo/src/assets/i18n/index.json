@@ -1,6 +1,10 @@
 {
-    "profile": {
-        "lazy": true,
-        "url": "/:lang/profile.json"
-    }
+  "lang": {
+    "lazy": true,
+    "url": "/lang/:lang.json"
+  },
+  "profile": {
+    "lazy": true,
+    "url": "/profile/:lang.json"
+  }
 }

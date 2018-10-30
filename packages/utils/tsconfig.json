@@ -2,20 +2,18 @@
   "compilerOptions": {
     "moduleResolution": "node",
     "target": "es2015",
+    "module": "es2015",
     "lib": [
       "es2017"
     ],
-    "allowJs": true,
-    "module": "esnext",
     "strict": true,
     "noEmitOnError": false,
     "sourceMap": false,
-    "declaration": false,
+    "declaration": true,
+    "declarationDir": "dist/types",
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "noUnusedLocals": false,
-    "noUnusedParameters": false,
     "outDir": "dist/src"
   },
   "files": [

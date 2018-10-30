@@ -8,12 +8,10 @@ export default {
     file: 'dist/index.js',
     format: 'cjs',
     strict: false,
-    banner: '#! /usr/bin/env node\n',
   },
   plugins: [resolve(), json(), commonjs()],
   external: [
-    '@intl/utils',
-    'ajv',
+    'typescript-json-schema',
     'child_process',
     'fs',
     'path',

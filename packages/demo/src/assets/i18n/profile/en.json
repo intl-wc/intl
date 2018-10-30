@@ -1,0 +1,25 @@
+{
+    "myName": {
+        "is": "My name is {{ name }}.",
+        "origin": "My name was passed through a route paramater!"
+    },
+    "pets": {
+        "feeling": "I love",
+        "possession": {
+            "singular": "my",
+            "plural": "my"
+        },
+        "dog": {
+            "singular": "dog",
+            "plural": "dogs"
+        },
+        "cat": {
+            "singular": "cat",
+            "plural": "catss"
+        },
+        "lizard": {
+            "singular": "lizard",
+            "plural": "lizardss"
+        }
+    }
+}

@@ -1,2 +1,0 @@
-- Add intellisense from `intl.config.ts` Schema?
-- Add intellisense for name completion in `<intl-phrase name="name">`?

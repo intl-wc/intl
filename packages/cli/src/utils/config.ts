@@ -1,5 +1,5 @@
 import { resolve, join } from 'path';
-import { INTL_CONFIG, SRC_DIR_README } from '../templates';
+import { SCHEMATICS } from '../schematics';
 import { writeFile, fileExists, mkdirp } from './fs';
 
 export const defaultConfig = {
@@ -12,11 +12,11 @@ export async function configExists(): Promise<boolean> {
 }
 
 async function createSrcDir(srcDir: string) {
-    srcDir = resolve('.', srcDir);
-    const filePath = join(srcDir, 'README.md');
-    const sourceText = SRC_DIR_README();
-    await mkdirp(srcDir);
-    await writeFile(filePath, sourceText);
+    // srcDir = resolve('.', srcDir);
+    // const filePath = join(srcDir, 'README.md');
+    // const sourceText = SCHEMATICS.find(x => x.name === 'config').render();
+    // await mkdirp(srcDir);
+    // await writeFile(filePath, sourceText);
 }
 
 export async function createConfig(srcDir?: string, locales?: string[]) {
@@ -25,10 +25,10 @@ export async function createConfig(srcDir?: string, locales?: string[]) {
     if (!locales) locales = defaultConfig.locales;
     config = { ...config, locales };
 
-    const sourceText = INTL_CONFIG(config);
+    // const sourceText = CONFIG.render(config);
     const filePath = resolve('.', 'intl.config.ts');
     return Promise.all([
-        writeFile(filePath, sourceText),
+        // writeFile(filePath, sourceText),
         createSrcDir(srcDir || defaultConfig.srcDir)
     ]);
 }

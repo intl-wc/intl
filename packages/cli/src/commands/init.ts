@@ -31,7 +31,7 @@ export default async function (...args: string[]) {
     const { language, phrase } = greeting();
     const time = printDuration(Date.now() - startTime);
 
-    console.log(`  ${bold(phrase)} ${dim(`(that's "Hello world!" in ${italic(language)})`)}
+    console.log(`\n  ${bold(phrase)} ${dim(`(that's "Hello world!" in ${italic(language)})`)}
 
 ${green('✔')} Project initialized ${dim(time)}
 

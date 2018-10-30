@@ -1,2 +1,3 @@
 export { default as init } from './init';
-export { default as audit } from './audit';
+export { default as add } from './add';
+export { default as lint } from './lint';

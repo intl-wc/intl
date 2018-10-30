@@ -1,0 +1,15 @@
+{
+    "lang": {
+        "en": "Inglés",
+        "es": "Español"
+    },
+    "appTitle": "Stencil – App de Inicio",
+    "greeting": "¡Hola, mundo!",
+    "welcome": "Bienvenido a la app de inicio para Stencil.",
+    "build": "¡Puedes usar este modelo para crear aplicaciones completas, todas con componentes web utilizando Stencil!",
+    "docs": {
+        "start": "Lee nuestra documentacion en",
+        "end": "para empezar."
+    },
+    "profileLink": "Página de Perfil"
+}
