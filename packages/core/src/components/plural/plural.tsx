@@ -1,5 +1,5 @@
 import { Component, State, Prop, Element, Method, Watch } from '@stencil/core';
-import { getLocale } from '../../utils/lang';
+import { locale } from '../../utils/locale';
 
 /**
  * Plural is a web component that enables plural sensitive formatting,
@@ -75,7 +75,8 @@ export class Plural {
     @Prop() type?: 'cardinal' | 'ordinal';
 
     private _locale: string | string[];
-    /** 
+    
+    /**
      * The `locale` that will be passed to `Intl.PluralRules`
      * 
      * You may also pass in a comma-separated list of values, providing fallbacks
@@ -83,7 +84,7 @@ export class Plural {
     @Prop() lang: string;
     @Watch('lang')
     langChanged() {
-        const lang = getLocale(this.lang, this.el);
+        const lang = this.lang || locale.get();
         if (lang.indexOf(',') > -1) {
             this._locale = lang.split(',').map(x => x.trim()).filter(x => x);
         } else {

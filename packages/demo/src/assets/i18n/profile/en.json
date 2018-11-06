@@ -15,11 +15,11 @@
         },
         "cat": {
             "singular": "cat",
-            "plural": "catss"
+            "plural": "cats"
         },
         "lizard": {
             "singular": "lizard",
-            "plural": "lizardss"
+            "plural": "lizards"
         }
     }
 }

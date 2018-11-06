@@ -19,7 +19,7 @@ export class Dictionary {
 
     @Element() element: HTMLElement;
 
-    @Event() intlLangChange: EventEmitter<string>;
+    @Event({ eventName: 'intlLocaleChange' }) onLocaleChange: EventEmitter<string>;
     
     @State() global: { [key: string]: any };
 
@@ -28,7 +28,7 @@ export class Dictionary {
     @Prop({ mutable: true }) lang: string;
     @Watch('lang')
     langChanged() {
-        this.intlLangChange.emit(this.lang);
+        this.onLocaleChange.emit(this.lang);
     }
 
     async componentWillLoad() {
@@ -43,15 +43,15 @@ export class Dictionary {
     componentDidUnload() {
         this.removeMO();
     }
-
+    
     async exists(path: string): Promise<string|boolean> {
         try {
             const headers = new Headers();
-            headers.append('Accept', 'application/json');
-            headers.append('Content-Type', 'application/json');
+            // headers.append('Accept', 'application/json');
+            // headers.append('Content-Type', 'application/json');
 
             return fetch(path, {
-                method: 'HEAD',
+                method: 'GET',
                 headers
             }).then((response) => {
                 const { status, url, headers } = response;
@@ -60,7 +60,7 @@ export class Dictionary {
                 const isJSON = (contentType && contentType.includes('application/json'));
                 if (!isJSON) return false;
                 return url;
-                })
+            })
         } catch (e) {
             return Promise.resolve(false)
         }

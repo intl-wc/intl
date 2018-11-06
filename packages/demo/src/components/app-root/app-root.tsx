@@ -1,5 +1,6 @@
 import { Component } from '@stencil/core';
 import '@intl/core';
+import { format } from '@intl/core';
 
 @Component({
   tag: 'app-root',
@@ -7,6 +8,11 @@ import '@intl/core';
   shadow: true
 })
 export class AppRoot {
+
+  componentWillLoad() {
+    const formatted = format('Hello {name, test} { gender }', { name: 'Nate', gender: 'male' });
+    console.log(formatted);
+  }
 
   render() {
     return (

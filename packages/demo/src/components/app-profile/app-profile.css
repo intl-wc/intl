@@ -10,3 +10,37 @@
 .pets > span + span {
   margin-left: 0.25em;
 }
+
+.controls {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  height: 36px;
+}
+
+.controls select, .controls button {
+  font-family: inherit;
+  font-size: 100%;
+  box-sizing: border-box;
+  height: 100%;
+  background: none;
+  border: 1px solid rgba(0,0,0,0.12);
+}
+
+.buttons {
+  margin-left: 1em;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.buttons button:first-of-type {
+  border-radius: 0;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom: none;
+}
+.buttons button:nth-of-type(2) {
+  border-radius: 0;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}

@@ -1,5 +1,7 @@
 import { Component, Prop, State, Method } from '@stencil/core';
 import { MatchResults } from '@stencil/router';
+import { LanguageObserver } from '@intl/core';
+// import { phrase } from '@intl/core';
 
 @Component({
   tag: 'app-profile',
@@ -8,6 +10,7 @@ import { MatchResults } from '@stencil/router';
 })
 export class AppProfile {
   
+  private lo: LanguageObserver;
   private emoji = {
     none: "🚫",
     dog: "🐕",
@@ -15,9 +18,50 @@ export class AppProfile {
     lizard: "🦎"
   }
   @State() value: number = 1;
-  @State() pet: 'dog'|'cat'|'lizard' = 'dog';
+  
+  @State() dog: string;
+  @State() cat: string;
+  @State() lizard: string;
+  
+  @State() pet: 'dog' | 'cat' | 'lizard' = 'dog';
 
   @Prop() match: MatchResults;
+
+  componentWillLoad() {
+    this.addLO();
+  }
+
+  componentDidUnload() {
+    this.removeLO();
+  }
+
+  private addLO() {
+    this.removeLO();
+
+    this.lo = new LanguageObserver((records) => {
+      records.filter(x => x.type === 'phrase')
+        .forEach(record => {
+          if (record.phraseName.indexOf('dog') > -1) {
+            this.dog = this.normalize(record.value);
+          } else if (record.phraseName.indexOf('cat') > -1) {
+            this.cat = this.normalize(record.value);
+          } else if (record.phraseName.indexOf('lizard') > -1) {
+            this.lizard = this.normalize(record.value);
+          }
+        })
+    });
+
+    this.lo.observe({
+      phraseFilter: ['profile.pets.dog.singular', 'profile.pets.cat.singular', 'profile.pets.lizard.singular']
+    })
+  }
+
+  private removeLO() {
+    if (this.lo) {
+      this.lo.disconnect();
+    }
+  }
+
 
   @Method()
   increment() {
@@ -58,7 +102,7 @@ export class AppProfile {
         <div class="app-profile">
           <intl-phrase-group name="profile">
           <p>
-            <intl-phrase name="myName.is" replace={{ name: this.normalize(this.match.params.name) }} /> <intl-phrase name="my-name.origin" />
+            <intl-phrase name="myName.is" replace={{ name: this.normalize(this.match.params.name) }} /> <intl-phrase name="myName.origin" />
           </p>
 
           <p>
@@ -84,20 +128,22 @@ export class AppProfile {
             { this.renderPets() }
           </div>
 
-          <div>
-            <button onClick={() => this.increment()}> + </button>
-            <button onClick={() => this.decrement()}> - </button>
-            
+          <div class="controls">
             <select name="pet" onInput={(e) => {
               this.pet = (e.target as any).value;
               this.value = 1;
             }}>
               {
                 ['dog', 'cat', 'lizard'].map((pet) => (
-                  <option value={pet} selected={this.pet === pet} label={pet}> <intl-phrase name={pet}/> </option>
+                  <option value={pet} selected={this.pet === pet}> { this[pet] } </option>
                 ))
             }
-            </select>
+              </select>
+              
+              <div class="buttons">
+                <button onClick={() => this.increment()}> + </button>
+                <button onClick={() => this.decrement()}> - </button>
+              </div>
           </div>
         
           </intl-phrase-group>

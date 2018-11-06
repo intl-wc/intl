@@ -1,4 +1,5 @@
-import { Component, Prop, Listen, State } from '@stencil/core';
+import { Component, Listen, State } from '@stencil/core';
+import { locale } from '@intl/core';
 
 
 @Component({
@@ -13,17 +14,15 @@ export class AppLanguage {
         'es'
     ]
 
-    @State() lang: string = document.documentElement.getAttribute('lang');
-    @Prop({ connect: 'intl-controller' }) intlCtrl: HTMLIntlControllerElement;
+    @State() lang: string = locale.get();
 
-    @Listen('document:intlLangChange')
-    protected langChangeHandler(event: CustomEvent<string>) {
+    @Listen('document:intlLocaleChange')
+    protected localeChangeHandler(event: CustomEvent<string>) {
         this.lang = event.detail;
     }
 
-    async setLanguage(value: string) {
-        const ctrl = await this.intlCtrl.componentOnReady();
-        ctrl.setLanguage(value);
+    setLanguage(value: string) {
+        return locale.set(value);
     }
 
     render() {

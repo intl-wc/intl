@@ -1,7 +1,7 @@
 {
     "myName": {
         "is": "Mi llamo {{ name }}.",
-        "origin": "¡Mi nombre fue pasada a través de un parámetro ruta!"
+        "origin": "¡Mi nombre fue pasada a través de un parámetro de ruta!"
     },
     "pets": {
         "feeling": "Amo a",

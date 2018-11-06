@@ -1,6 +1,5 @@
 import { Component, Prop, State, Element, Watch, Listen } from '@stencil/core';
 
-
 @Component({
     tag: 'intl-phrase',
     shadow: true
@@ -48,7 +47,7 @@ export class Phrase {
         }
     }
 
-    @Listen('document:intlLangChange')
+    @Listen('document:intlLocaleChange')
     protected langChangeHandler() {
         this.addIO();
     }

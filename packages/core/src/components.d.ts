@@ -12,14 +12,6 @@ import '@stencil/core';
 
 export namespace Components {
 
-  interface IntlController {
-    'setLanguage': (lang: string) => void;
-  }
-  interface IntlControllerAttributes extends StencilHTMLAttributes {}
-
-  interface IntlDatetime {}
-  interface IntlDatetimeAttributes extends StencilHTMLAttributes {}
-
   interface IntlDictionary {
     'lang': string;
     'resolvePhrase': (name: string, lang?: string) => Promise<string | false>;
@@ -27,12 +19,9 @@ export namespace Components {
   }
   interface IntlDictionaryAttributes extends StencilHTMLAttributes {
     'lang'?: string;
-    'onIntlLangChange'?: (event: CustomEvent<string>) => void;
+    'onIntlLocaleChange'?: (event: CustomEvent<string>) => void;
     'src'?: string;
   }
-
-  interface IntlNumber {}
-  interface IntlNumberAttributes extends StencilHTMLAttributes {}
 
   interface IntlPhraseGroup {
     'name': string;
@@ -92,56 +81,36 @@ export namespace Components {
     'value'?: number|string;
   }
 
-  interface IntlRelativeTime {}
-  interface IntlRelativeTimeAttributes extends StencilHTMLAttributes {}
+  interface IntlPreload {
+    'name': string;
+  }
+  interface IntlPreloadAttributes extends StencilHTMLAttributes {
+    'name'?: string;
+  }
 }
 
 declare global {
   interface StencilElementInterfaces {
-    'IntlController': Components.IntlController;
-    'IntlDatetime': Components.IntlDatetime;
     'IntlDictionary': Components.IntlDictionary;
-    'IntlNumber': Components.IntlNumber;
     'IntlPhraseGroup': Components.IntlPhraseGroup;
     'IntlPhrase': Components.IntlPhrase;
     'IntlPlural': Components.IntlPlural;
-    'IntlRelativeTime': Components.IntlRelativeTime;
+    'IntlPreload': Components.IntlPreload;
   }
 
   interface StencilIntrinsicElements {
-    'intl-controller': Components.IntlControllerAttributes;
-    'intl-datetime': Components.IntlDatetimeAttributes;
     'intl-dictionary': Components.IntlDictionaryAttributes;
-    'intl-number': Components.IntlNumberAttributes;
     'intl-phrase-group': Components.IntlPhraseGroupAttributes;
     'intl-phrase': Components.IntlPhraseAttributes;
     'intl-plural': Components.IntlPluralAttributes;
-    'intl-relative-time': Components.IntlRelativeTimeAttributes;
+    'intl-preload': Components.IntlPreloadAttributes;
   }
 
-
-  interface HTMLIntlControllerElement extends Components.IntlController, HTMLStencilElement {}
-  var HTMLIntlControllerElement: {
-    prototype: HTMLIntlControllerElement;
-    new (): HTMLIntlControllerElement;
-  };
-
-  interface HTMLIntlDatetimeElement extends Components.IntlDatetime, HTMLStencilElement {}
-  var HTMLIntlDatetimeElement: {
-    prototype: HTMLIntlDatetimeElement;
-    new (): HTMLIntlDatetimeElement;
-  };
 
   interface HTMLIntlDictionaryElement extends Components.IntlDictionary, HTMLStencilElement {}
   var HTMLIntlDictionaryElement: {
     prototype: HTMLIntlDictionaryElement;
     new (): HTMLIntlDictionaryElement;
-  };
-
-  interface HTMLIntlNumberElement extends Components.IntlNumber, HTMLStencilElement {}
-  var HTMLIntlNumberElement: {
-    prototype: HTMLIntlNumberElement;
-    new (): HTMLIntlNumberElement;
   };
 
   interface HTMLIntlPhraseGroupElement extends Components.IntlPhraseGroup, HTMLStencilElement {}
@@ -162,32 +131,26 @@ declare global {
     new (): HTMLIntlPluralElement;
   };
 
-  interface HTMLIntlRelativeTimeElement extends Components.IntlRelativeTime, HTMLStencilElement {}
-  var HTMLIntlRelativeTimeElement: {
-    prototype: HTMLIntlRelativeTimeElement;
-    new (): HTMLIntlRelativeTimeElement;
+  interface HTMLIntlPreloadElement extends Components.IntlPreload, HTMLStencilElement {}
+  var HTMLIntlPreloadElement: {
+    prototype: HTMLIntlPreloadElement;
+    new (): HTMLIntlPreloadElement;
   };
 
   interface HTMLElementTagNameMap {
-    'intl-controller': HTMLIntlControllerElement
-    'intl-datetime': HTMLIntlDatetimeElement
     'intl-dictionary': HTMLIntlDictionaryElement
-    'intl-number': HTMLIntlNumberElement
     'intl-phrase-group': HTMLIntlPhraseGroupElement
     'intl-phrase': HTMLIntlPhraseElement
     'intl-plural': HTMLIntlPluralElement
-    'intl-relative-time': HTMLIntlRelativeTimeElement
+    'intl-preload': HTMLIntlPreloadElement
   }
 
   interface ElementTagNameMap {
-    'intl-controller': HTMLIntlControllerElement;
-    'intl-datetime': HTMLIntlDatetimeElement;
     'intl-dictionary': HTMLIntlDictionaryElement;
-    'intl-number': HTMLIntlNumberElement;
     'intl-phrase-group': HTMLIntlPhraseGroupElement;
     'intl-phrase': HTMLIntlPhraseElement;
     'intl-plural': HTMLIntlPluralElement;
-    'intl-relative-time': HTMLIntlRelativeTimeElement;
+    'intl-preload': HTMLIntlPreloadElement;
   }
 
 
