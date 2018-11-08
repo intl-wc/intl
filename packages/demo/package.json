@@ -12,7 +12,7 @@
     "intl": "intl"
   },
   "dependencies": {
-    "@intl/core": "0.0.1-alpha.6",
+    "@intl/core": "0.0.1-beta.0",
     "@stencil/router": "~0.3.0"
   },
   "repository": {
@@ -26,7 +26,6 @@
   },
   "homepage": "https://github.com/ionic-team/stencil",
   "devDependencies": {
-    "workbox-build": "3.4.1",
-    "@intl/cli": "0.1.0"
+    "workbox-build": "3.4.1"
   }
 }

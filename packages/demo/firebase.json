@@ -8,6 +8,10 @@
     ],
     "rewrites": [
       {
+        "source": "/assets/:asset*",
+        "destination": "/assets/:asset*"
+      },
+      {
         "source": "**",
         "destination": "/index.html"
       }

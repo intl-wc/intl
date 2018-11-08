@@ -15,7 +15,7 @@ const parse = (value: string): ICUArgument[] => {
     const args = !match ? [] : match
         .map(x => {
             const str = x.trim();
-            const [ key, type, format ] = str.replace('\{', '').replace('\}', '').trim().split(',').map(y => y.trim())
+            const [key, type, format] = str.replace('\{', '').replace('\}', '').trim().split(',').map(y => y.trim())
             const start = value.indexOf(str);
             const end = start + str.length;
             const pos = { start, end };
@@ -31,12 +31,14 @@ export const format = (value: string, data?: { [key: string]: string }) => {
     let args: ICUArgument[] = [];
     if (cache.has(value)) args = cache.get(value);
     else args = parse(value);
-    
+
+    console.log(args);
+
     let parts = [];
     for (const [index, char] of Object.entries(value)) {
         let i = Number.parseInt(index);
         let arg = args.find(a => i >= a.pos.start && i < a.pos.end);
-        
+
         if (arg) {
             const v = data[arg.key]
             if (parts.indexOf(v) === -1) parts = [...parts, v];

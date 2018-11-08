@@ -1,7 +1,12 @@
-export type Lazy<T> = {
+export interface IntlChange {
+    locale: string;
+    dir: 'ltr' | 'rtl' | 'auto';
+}
+
+export type Lazy<T = any> = {
     lazy: true;
     url: string;
-    interface: T;
+    interface?: T;
 }
 
 export interface Config {

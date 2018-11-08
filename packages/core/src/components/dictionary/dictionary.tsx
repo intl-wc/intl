@@ -1,9 +1,7 @@
 import { Component, Element, Prop, Method, Event, EventEmitter, Watch, State } from '@stencil/core';
-
-interface Lazy {
-    lazy: true;
-    url: string;
-}
+import { Lazy, IntlChange } from '../../declarations';
+import { locale } from '../../utils/locale';
+import { direction } from '../../utils/direction';
 
 @Component({
     tag: 'intl-dictionary',
@@ -19,7 +17,7 @@ export class Dictionary {
 
     @Element() element: HTMLElement;
 
-    @Event({ eventName: 'intlLocaleChange' }) onLocaleChange: EventEmitter<string>;
+    @Event({ eventName: 'intlChange' }) onIntlChange: EventEmitter<IntlChange>;
     
     @State() global: { [key: string]: any };
 
@@ -27,14 +25,33 @@ export class Dictionary {
 
     @Prop({ mutable: true }) lang: string;
     @Watch('lang')
-    langChanged() {
-        this.onLocaleChange.emit(this.lang);
+    async langChanged() {
+        this.triggerLocaleChange();
+        await this.setDirFromDict();
+    }
+
+    @Prop({ mutable: true }) dir: string;
+    @Watch('dir')
+    dirChanged(newValue, oldValue) {
+        console.log({ newValue, oldValue });
+        if (!this.dir.match(/ltr|rtl|auto/g)) this.dir = 'auto';
+        this.triggerLocaleChange();
+    }
+
+    private triggerLocaleChange() {
+        const { lang: locale, dir } = this;
+        
+        this.onIntlChange.emit({
+            dir: dir as 'ltr' | 'rtl' | 'auto',
+            locale
+        })
     }
 
     async componentWillLoad() {
         this.dicts = new Map();
         this.addMO();
-        if (!this.lang) this.lang = document.documentElement.getAttribute('lang');
+        if (!this.lang) this.lang = locale.get();
+        if (!this.dir) this.dir = direction.get();
         
         if (!this.src) throw new Error('<intl-dictionary> requires a `src` attribute. Did you forget to include an <intl-dictionary> element in your app root?')
         await this.fetchDictionary();
@@ -216,17 +233,32 @@ export class Dictionary {
             this.removeMO();
             this.mo = new MutationObserver(data => {
                 if (data[0].attributeName === 'lang') {
-                    this.lang = document.documentElement.getAttribute('lang');
+                    this.lang = locale.get();
+                }
+                if (data[0].attributeName === 'dir') {
+                    this.dir = direction.get();
                 }
             });
 
-            this.mo.observe(document.documentElement, { attributes: true, attributeFilter: ['lang']});
+            this.mo.observe(document.documentElement, { attributes: true, attributeFilter: ['lang', 'dir']});
         }
     }
+
     private removeMO() {
         if (this.mo) {
             this.mo.disconnect();
             this.mo = undefined;
+        }
+    }
+
+    private async setDirFromDict() {
+        if (this.requests.has(this.lang)) await this.requests.get(this.lang);
+
+        if (this.dicts.has(this.lang)) {
+            const dir = this.dicts.get(this.lang).get('dir');
+            if (dir && typeof dir === 'string' && /ltr|rtl|auto/g.test(dir) && this.dir !== dir) {
+                direction.set(dir as any)
+            }
         }
     }
 }

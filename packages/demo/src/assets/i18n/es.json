@@ -1,8 +1,4 @@
 {
-    "lang": {
-        "en": "Inglés",
-        "es": "Español"
-    },
     "appTitle": "Stencil – App de Inicio",
     "greeting": "¡Hola, mundo!",
     "welcome": "Bienvenido a la app de inicio para Stencil.",

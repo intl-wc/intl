@@ -31,11 +31,11 @@ export class LanguageObserver {
         if (opts.oldValue) this.oldValue = opts.oldValue;
 
         const onChange = (dict: HTMLIntlDictionaryElement) => {
-            return (event: CustomEvent<string>) => {
-                if (!this.localeFilter || !this.localeFilter.length || this.localeFilter && this.localeFilter.findIndex(x => x === event.detail) > -1) {
+            return (event: CustomEvent<{ locale: string, dir: string }>) => {
+                if (!this.localeFilter || !this.localeFilter.length || this.localeFilter && this.localeFilter.findIndex(x => x === event.detail.locale) > -1) {
                     let localeRecord: LanguageRecord = {
                         type: 'locale',
-                        value: event.detail
+                        value: event.detail.locale
                     }
                     if (this.oldValue) {
                         const oldValue = this.previous.find(x => x.type === 'locale');
@@ -77,12 +77,12 @@ export class LanguageObserver {
             .querySelector('intl-dictionary').componentOnReady()
             .then(dict => {
                 cb = onChange(dict);
-                cb(({ detail: dict.lang } as any));
+                cb(({ detail: { locale: dict.lang, dir: dict.dir } } as any));
                 return dict;
             })
             .then(dict => {
                 this.onChange = (event: CustomEvent<string>) => cb(event);
-                dict.addEventListener('intlLocaleChange', this.onChange)
+                dict.addEventListener('intlChange', this.onChange)
             })
     }
 
@@ -90,6 +90,6 @@ export class LanguageObserver {
     disconnect() {
         document
             .querySelector('intl-dictionary').componentOnReady()
-            .then(dict => dict.removeEventListener('intlLocaleChange', this.onChange));
+            .then(dict => dict.removeEventListener('intlChange', this.onChange));
     }
 }

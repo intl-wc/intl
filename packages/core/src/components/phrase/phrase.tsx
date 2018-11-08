@@ -47,7 +47,7 @@ export class Phrase {
         }
     }
 
-    @Listen('document:intlLocaleChange')
+    @Listen('document:intlChange')
     protected langChangeHandler() {
         this.addIO();
     }

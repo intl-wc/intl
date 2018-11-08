@@ -1,5 +1,5 @@
 import { Component, Listen, State } from '@stencil/core';
-import { locale } from '@intl/core';
+import { locale, IntlChange } from '@intl/core';
 
 
 @Component({
@@ -16,9 +16,9 @@ export class AppLanguage {
 
     @State() lang: string = locale.get();
 
-    @Listen('document:intlLocaleChange')
-    protected localeChangeHandler(event: CustomEvent<string>) {
-        this.lang = event.detail;
+    @Listen('document:intlChange')
+    protected localeChangeHandler(event: CustomEvent<IntlChange>) {
+        this.lang = event.detail.locale;
     }
 
     setLanguage(value: string) {

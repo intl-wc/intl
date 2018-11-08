@@ -38,17 +38,41 @@ export class AppProfile {
   private addLO() {
     this.removeLO();
 
+    const isPhrase = (record) => record.type === 'phrase';
+    const collectPhrases = (collector, record) => (
+      { ...collector, [record.phraseName]: record.value }
+    )
+    const dot = (str, val, obj) => {
+      let currentObj = obj;
+      let keys = str.split('.');
+      let i;
+      let key;
+
+      for (i = 0; i < Math.max(1, keys.length - 1); i++) {
+        key = keys[i];
+        currentObj[key] = currentObj[key] || {};
+        currentObj = currentObj[key];
+      }
+
+      currentObj[keys[i]] = val;
+      delete obj[str];
+    }
+
+    const expand = (obj) => {
+      for (let key of Object.keys(obj)) {
+        if (key.includes('.')) {
+          dot(key, obj[key], obj)
+        }
+      }
+      return obj;
+    }
+
     this.lo = new LanguageObserver((records) => {
-      records.filter(x => x.type === 'phrase')
-        .forEach(record => {
-          if (record.phraseName.indexOf('dog') > -1) {
-            this.dog = this.normalize(record.value);
-          } else if (record.phraseName.indexOf('cat') > -1) {
-            this.cat = this.normalize(record.value);
-          } else if (record.phraseName.indexOf('lizard') > -1) {
-            this.lizard = this.normalize(record.value);
-          }
-        })
+      const { profile: { pets: { dog, cat, lizard }}} = expand(records.filter(isPhrase).reduce(collectPhrases, {}))
+      
+      this.dog = dog.singular;
+      this.cat = cat.singular;
+      this.lizard = lizard.singular;
     });
 
     this.lo.observe({

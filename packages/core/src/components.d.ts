@@ -8,18 +8,26 @@
 import '@stencil/core';
 
 
+import {
+  EventEmitter,
+} from '@stencil/core';
+import {
+  IntlChange,
+} from './declarations';
 
 
 export namespace Components {
 
   interface IntlDictionary {
+    'dir': string;
     'lang': string;
     'resolvePhrase': (name: string, lang?: string) => Promise<string | false>;
     'src': string;
   }
   interface IntlDictionaryAttributes extends StencilHTMLAttributes {
+    'dir'?: string;
     'lang'?: string;
-    'onIntlLocaleChange'?: (event: CustomEvent<string>) => void;
+    'onIntlChange'?: (event: CustomEvent<IntlChange>) => void;
     'src'?: string;
   }
 
