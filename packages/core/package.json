@@ -1,6 +1,6 @@
 {
   "name": "@intl/core",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Internationalization components for modern web apps",
   "module": "dist/esm/index.js",
   "main": "dist/index.js",
@@ -35,5 +35,8 @@
   "bugs": {
     "url": "https://github.com/intl-wc/intl/issues"
   },
-  "homepage": "https://intljs.com"
+  "homepage": "https://intljs.com",
+  "keywords": [
+    "intl", "i18n", "internationalization", "locale", "l10n", "localization", "globalization", "web components", "custom elements", "stencil", "translate", "translation"
+  ]
 }
