@@ -1,6 +1,6 @@
 {
   "name": "@intl/core",
-  "version": "0.0.1-beta.0",
+  "version": "0.0.1",
   "description": "Internationalization components for modern web apps",
   "module": "dist/esm/index.js",
   "main": "dist/index.js",
